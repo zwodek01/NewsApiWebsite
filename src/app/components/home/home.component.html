@@ -4,7 +4,7 @@
   <p class="uk-text-bolder uk-text-center">Informacje z całego świata</p>
   <hr class="uk-divider-icon">
   <div class="home__article">
-    <article *ngFor="let item of news.articles"
+    <article *ngFor="let item of news"
       class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
       <div class="uk-card-media-left uk-cover-container">
         <img [src]=item.urlToImage uk-cover>
@@ -25,5 +25,7 @@
         </div>
       </div>
     </article>
+    <span *ngIf="!spinner" class="uk-margin-small-right" uk-spinner="ratio: 3"></span>
+    <button *ngIf="hideButton" class="uk-button uk-button-secondary" (click)="loadMoreNews()">Więcej</button>
   </div>
 </section>
