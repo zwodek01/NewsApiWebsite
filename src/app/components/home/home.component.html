@@ -1,11 +1,87 @@
 <app-topbar></app-topbar>
 <section class="home">
-  <h1 class="uk-heading-line uk-text-center uk-margin-top"><span>NEWS<br>WORLD</span></h1>
-  <p class="uk-text-bolder uk-text-center">Informacje z całego świata</p>
+  <h1 class="uk-heading-line uk-text-center uk-margin-top home__title"><span>NEWS<br>WORLD</span></h1>
+  <p class="uk-text-bolder uk-text-center">Information from around the world</p>
   <hr class="uk-divider-icon">
   <div class="home__article">
-    <article *ngFor="let item of news"
-      class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+    <form [formGroup]=countrySelect (ngSubmit)="showArticle()" class="home__form">
+      <div>
+        <label class="uk-form-label">Country</label>
+        <select formControlName="country" class="uk-select">+=
+          <option value="ar">Argentina</option>
+          <option value="at">Austria</option>
+          <option value="au">Australia</option>
+          <option value="be">Belgium</option>
+          <option value="bg">Bulgaria</option>
+          <option value="br">Brazil</option>
+          <option value="ca">Canada</option>
+          <option value="cn">China</option>
+          <option value="co">Colombia</option>
+          <option value="cu">Cuba</option>
+          <option value="cz">Czechia</option>
+          <option value="eg">Egypt</option>
+          <option value="fr">France</option>
+          <option value="de">Germany</option>
+          <option value="gr">Greece</option>
+          <option value="hk">Hong Kong</option>
+          <option value="hu">Hungary</option>
+          <option value="id">Indonesia</option>
+          <option value="ie">Ireland</option>
+          <option value="il">Israel</option>
+          <option value="in">India</option>
+          <option value="it">Italy</option>
+          <option value="jp">Japan</option>
+          <option value="kr">Korea</option>
+          <option value="lt">Lithuania</option>
+          <option value="lv">Latvia</option>
+          <option value="ma">Morocco</option>
+          <option value="mx">Mexico</option>
+          <option value="my">Malaysia</option>
+          <option value="ng">Nigeria</option>
+          <option value="nl">Netherlands</option>
+          <option value="no">Norway</option>
+          <option value="nz">New Zealand</option>
+          <option value="ph">Philippines</option>
+          <option value="pl">Poland</option>
+          <option value="pt">Portugal</option>
+          <option value="ro">Romania</option>
+          <option value="rs">Serbia</option>
+          <option value="ru">Russian Federation</option>
+          <option value="sa">Saudi Arabia</option>
+          <option value="se">Sweden</option>
+          <option value="sg">Singapore</option>
+          <option value="si">Slovenia</option>
+          <option value="sk">Slovakia</option>
+          <option value="th">Thailand</option>
+          <option value="tr">Turkey</option>
+          <option value="tw">Taiwan</option>
+          <option value="ua">Ukraine</option>
+          <option value="ae">United Arab Emirates</option>
+          <option value="gb">United Kingdom</option>
+          <option value="us">United States</option>
+          <option value="ch">Switzerland</option>
+          <option value="ve">Venezuela</option>
+          <option value="za">South Africa</option>
+        </select>
+      </div>
+      <div>
+        <label class="uk-form-label">Country</label>
+        <select formControlName="category" class="uk-select">
+          <option value="business">Business</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="general">General</option>
+          <option value="health">Health</option>
+          <option value="science">Science</option>
+          <option value="sports">Sports</option>
+          <option value="technology">Technology</option>
+        </select>
+      </div>
+      <button [disabled]=disabledSubmitButton class="uk-button uk-button-secondary" type="submit"> <span
+          *ngIf="disabledSubmitButton">Select country and categories</span> <span
+          *ngIf="!disabledSubmitButton">Show</span></button>
+    </form>
+    <article *ngFor="let item of news" class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin"
+      uk-grid>
       <div class="uk-card-media-left uk-cover-container">
         <img [src]=item.urlToImage uk-cover>
         <canvas width="600" height="400"></canvas>
@@ -13,19 +89,18 @@
       <div>
         <div class="uk-card-body">
           <h2 class="uk-article-title">{{item.title}}</h2>
-          <p class="uk-article-meta">Autor {{item.author}} dodany {{item.publishedAt.slice(0,10)}}</p>
-          <p class="uk-article-meta">Źródło {{item.source.name}}</p>
-
+          <p class="uk-article-meta">Author {{item.author}} added {{item.publishedAt.slice(0,10)}}</p>
+          <p class="uk-article-meta">From {{item.source.name}}</p>
           <p class="uk-text-lead">{{item.description}}
           </p>
           <p>{{item.content}}</p>
           <div>
-            <a class="uk-button uk-button-secondary" target="_blank" [href]=item.url>Czytaj więcej</a>
+            <a class="uk-button uk-button-secondary" target="_blank" [href]=item.url>Read more</a>
           </div>
         </div>
       </div>
     </article>
     <span *ngIf="!spinner" class="uk-margin-small-right" uk-spinner="ratio: 3"></span>
-    <button *ngIf="hideButton" class="uk-button uk-button-secondary" (click)="loadMoreNews()">Więcej</button>
+    <button *ngIf="hideButton" class="uk-button uk-button-secondary home__button" (click)="loadMoreNews()">More</button>
   </div>
 </section>

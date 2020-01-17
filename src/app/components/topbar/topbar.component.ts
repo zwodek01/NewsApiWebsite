@@ -19,25 +19,25 @@ export class TopbarComponent implements OnInit {
     let today = this.currentDate.getDay();
     switch (today) {
       case 0:
-        day = "Niedziela";
+        day = "Sunday";
         break;
       case 1:
-        day = "Poniedziałek";
+        day = "Monday";
         break;
       case 2:
-        day = "Wtorek";
+        day = "Tuesday";
         break;
       case 3:
-        day = "Środa";
+        day = "Wednesday";
         break;
       case 4:
-        day = "Czwartek";
+        day = "Thursday";
         break;
       case 5:
-        day = "Piątek";
+        day = "Friday";
         break;
       case 6:
-        day = "Sobota";
+        day = "Saturday";
     }
     return day
   }

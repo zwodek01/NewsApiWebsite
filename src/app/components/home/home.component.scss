@@ -4,5 +4,20 @@
   &__article {
     display: grid;
     gap: 30px;
+    justify-items: center;
+  }
+
+  &__form {
+    display: grid;
+    gap: 20px;
+    width: 290px;
+  }
+
+  &__title {
+    font-size: 50px;
+  }
+
+  &__button {
+    width: 200px;
   }
 }
