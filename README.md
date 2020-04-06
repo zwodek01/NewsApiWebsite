@@ -1,4 +1,23 @@
 # NewsApiWebsite
+Website with the latest news from the world.
+You can filter news by country or category.
+
+## Technologies
+- Angular 8
+
+## API
+- https://newsapi.org
+
+## Style
+- UIkit
+
+## Live Demo
+
+https://unruffled-lewin-b7eb32.netlify.com
+
+##
+
+![Example View](https://i.imgur.com/OF3q40n.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
